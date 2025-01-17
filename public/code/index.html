@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="https://erc7824.org//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://erc7824.org//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://erc7824.org//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://erc7824.org//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://erc7824.org//apple-touch-icon.png">
+
+<meta name="description" content=""/>
+
+<title>
+    
+    Code | ERC-7824
+    
+</title>
+
+<link rel="canonical" href="https://erc7824.org/code/"/>
+
+<meta property="og:url" content="https://erc7824.org/code/">
+  <meta property="og:site_name" content="ERC-7824">
+  <meta property="og:title" content="Code">
+  <meta property="og:description" content="Interfaces # // SPDX-License-Identifier: MIT pragma solidity 0.8.17; import {ExitFormat as Outcome} from &#39;@statechannels/exit-format/contracts/ExitFormat.sol&#39;; interface INitroTypes { struct Signature { uint8 v; bytes32 r; bytes32 s; } struct FixedPart { address[] participants; uint64 channelNonce; address appDefinition; uint48 challengeDuration; } struct VariablePart { Outcome.SingleAssetExit[] outcome; bytes appData; uint48 turnNum; bool isFinal; } struct SignedVariablePart { VariablePart variablePart; Signature[] sigs; } struct RecoveredVariablePart { VariablePart variablePart; uint256 signedBy; // bitmask } } Adjudicator #">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2025-01-17T16:45:24+02:00">
+    <meta property="article:modified_time" content="2025-01-17T16:45:24+02:00">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.a904013acd8e3bd04ce56a64a8fe5525fd5f738ad6caa0bfbcbe39a8d7ed932d.css" media="all">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="https://erc7824.org/">ERC-7824</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/spec" >
+                /spec
+            </a>
+        </p>
+        
+      
+        <p class="small  bold ">
+            <a href="/code" >
+                /code
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/faq" >
+                /faq
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/ref" >
+                /ref
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a class="breadcrumbs-current" href="/code/">Code</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Code</h1>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2025-01-17T16:45:24&#43;02:00">January 17, 2025</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <h1 class="heading" id="interfaces">
+  Interfaces
+  <a href="#interfaces">#</a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-solidity" data-lang="solidity"><span style="display:flex;"><span><span style="color:#888;font-style:italic">// SPDX-License-Identifier: MIT
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span><span style="font-weight:bold;text-decoration:underline">pragma solidity</span> 0.8.17;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold;text-decoration:underline">import</span> {ExitFormat <span style="font-weight:bold;text-decoration:underline">as</span> Outcome} <span style="font-weight:bold;text-decoration:underline">from</span> <span style="color:#666;font-style:italic">&#39;@statechannels/exit-format/contracts/ExitFormat.sol&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic;text-decoration:underline">interface</span> <span style="color:#666;font-weight:bold;font-style:italic">INitroTypes</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic;text-decoration:underline">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">Signature</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">uint8</span> v;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">bytes32</span> r;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">bytes32</span> s;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic;text-decoration:underline">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">FixedPart</span> {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">address</span>[] participants;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">uint64</span> channelNonce;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">address</span> appDefinition;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">uint48</span> challengeDuration;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic;text-decoration:underline">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">VariablePart</span> {
+</span></span><span style="display:flex;"><span>        Outcome.SingleAssetExit[] outcome;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">bytes</span> appData;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">uint48</span> turnNum;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">bool</span> isFinal;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic;text-decoration:underline">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">SignedVariablePart</span> {
+</span></span><span style="display:flex;"><span>        VariablePart variablePart;
+</span></span><span style="display:flex;"><span>        Signature[] sigs;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold;font-style:italic;text-decoration:underline">struct</span> <span style="color:#666;font-weight:bold;font-style:italic">RecoveredVariablePart</span> {
+</span></span><span style="display:flex;"><span>        VariablePart variablePart;
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold;text-decoration:underline">uint256</span> signedBy; <span style="color:#888;font-style:italic">// bitmask
+</span></span></span><span style="display:flex;"><span><span style="color:#888;font-style:italic"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 class="heading" id="adjudicator">
+  Adjudicator
+  <a href="#adjudicator">#</a>
+</h1>
+
+    
+  </div>
+
+  
+
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flex">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/faq/">
+                        FAQ
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/ref/">
+                        References
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+    
+    <p>Powered by
+        <a href="https://statechannels.org/">StateChannels</a>
+        and
+        <a href="https://github.com/layer-3/erc7824">Layer3 Foundation</a>
+    </p>
+    
+    
+    
+
+
+  </footer>
+
+  
+
+</body>
+
+<script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+<script defer src="/js/copy-code.js"></script>
+</html>

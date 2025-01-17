@@ -1,0 +1,14 @@
+{{ $showFooter := default true .Site.Params.showFooter }}
+{{ if $showFooter }}
+    {{ if not .Site.Params.footerContent }}
+    <p>Powered by
+        <a href="https://statechannels.org/">StateChannels</a>
+        and
+        <a href="https://github.com/layer-3/erc7824">Layer3 Foundation</a>
+    </p>
+    {{ end }}
+    
+    {{ with .Site.Params.footerContent }}
+    <p>{{ . | markdownify }}</p>
+    {{ end }}
+{{ end }}

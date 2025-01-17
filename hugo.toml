@@ -1,0 +1,86 @@
+baseURL = 'https://erc7824.org/'
+languageCode = 'en-us'
+title = 'ERC-7824'
+theme = 'typo'
+
+[taxonomies]
+tag = 'tags'
+
+# Google analytics code
+#googleAnalytics = "G-xxxxxxxxx"
+
+[params]
+# Meta description
+description = "Statechannels allows for ultra-low cost, low-latency conditional transfer of digital assets."
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'ERC-7824 Stateful Asset Transfer Protocol'
+homeIntroContent = """
+ERC-7824 describe a chain agnostic protocol for state channels
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Resources'
+homeCollection = 'ref'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+breadcrumbs = true
+
+# Social icons
+[[params.social]]
+name = "linkedin"
+url = "https://www.linkedin.com/company/yellow-com/"
+
+[[params.social]]
+name = "twitter"
+url = "https://x.com/Yellow"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/layer-3/erc7824"
+
+# Main menu pages
+[[params.menu]]
+name = "home"
+url = "/"
+
+[[params.menu]]
+name = "spec"
+url = "/spec"
+
+[[params.menu]]
+name = "code"
+url = "/code"
+
+[[params.menu]]
+name = "faq"
+url = "/faq"
+
+[[params.menu]]
+name = "ref"
+url = "/ref"
+
+# Syntax highlight on code blocks
+[markup]
+[markup.highlight]
+style = 'algol'
+
+# Giscus comments
+[params.giscus]
+enable = false
+repo = "layer-3/erc7824"
+repoid = "repoId"
+category = "General"
+categoryid = "categoryId"
+mapping = "pathname"
+theme = "preferred_color_scheme"
