@@ -47,7 +47,7 @@ url = "https://x.com/Yellow"
 
 [[params.social]]
 name = "github"
-url = "https://github.com/layer-3/erc7824"
+url = "https://github.com/erc7824"
 
 # Main menu pages
 [[params.menu]]
